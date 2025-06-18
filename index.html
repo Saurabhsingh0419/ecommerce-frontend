@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Frontend</title>
-    <link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Frontend</title>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <header>
-        <header class="main-header">
-            <div class="logo">MyShop</div>
-            
-            <nav class="nav-links">
-              <a href="#">Home</a>
-              <a href="#">Products</a>
-              <a href="#">About</a>
-              <a href="#">Contact</a>
-            </nav>
-          
-            <div class="header-right">
-              <input type="text" placeholder="Search products..." class="search-bar">
-              <div class="cart-icon">
-                🛒
-                <span class="cart-badge">0</span>
-              </div>
-              <div class="hamburger">&#9776;</div>
-            </div>
-          </header>
-          
-        </header>
-    <script src="scripts/app.js"></script>
 
-    <section class="hero-section">
-        <div class="hero-content">
-          <h1>Biggest Sale of the Year!</h1>
-          <p>Up to 50% off on all products. Limited time offer!</p>
-          <button class="cta-button">Shop Now</button>
-        </div>
-      </section>
-      
+  <!-- Header -->
+  <header class="main-header">
+    <div class="logo">MyShop</div>
+    
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <input type="text" placeholder="Search products..." class="search-bar">
+      <div class="cart-icon">🛒 <span class="cart-badge">0</span></div>
+      <div class="hamburger">&#9776;</div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Biggest Sale of the Year!</h1>
+      <p>Up to 50% off on all products. Limited time offer!</p>
+      <button class="cta-button">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="product-grid"></section>
+
+  <!-- Loading & Error Message -->
+  <div id="loading">Loading products...</div>
+  <div id="error" style="display:none;">Failed to load products. Please try again later.</div>
+
+  <script src="scripts/app.js"></script>
+
 </body>
 </html>
+
+
