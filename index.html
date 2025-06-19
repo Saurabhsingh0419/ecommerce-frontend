@@ -7,77 +7,68 @@
   <link rel="stylesheet" href="styles/main.css">
 
   <!-- Firebase Config -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-  </script>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js" defer></script>
 
+  <!-- Google Fonts Optimized -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="main-header">
-    <div class="logo">MyShop</div>
-    
-    <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Products</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+<header class="main-header">
+  <div class="logo">MyShop</div>
+  <nav class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+  </nav>
+  <div class="header-right">
+    <input type="text" placeholder="Search products..." class="search-bar">
+    <div class="cart-icon">🛒 <span class="cart-badge">0</span></div>
+    <div class="hamburger">&#9776;</div>
+  </div>
+</header>
 
-    <div class="header-right">
-      <input type="text" placeholder="Search products..." class="search-bar">
-      <div class="cart-icon">🛒 <span class="cart-badge">0</span></div>
-      <div class="hamburger">&#9776;</div>
-    </div>
-  </header>
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>Biggest Sale of the Year!</h1>
+    <p>Up to 50% off on all products. Limited time offer!</p>
+    <button class="cta-button">Shop Now</button>
+  </div>
+</section>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1>Biggest Sale of the Year!</h1>
-      <p>Up to 50% off on all products. Limited time offer!</p>
-      <button class="cta-button">Shop Now</button>
-    </div>
-  </section>
+<section class="product-grid"></section>
 
-  <!-- Product Grid -->
-  <section class="product-grid"></section>
+<div id="loading">Loading products...</div>
+<div id="error" style="display:none;">Failed to load products.</div>
 
-  <!-- Loading & Error Message -->
-  <div id="loading">Loading products...</div>
-  <div id="error" style="display:none;">Failed to load products.</div>
+<!-- Scripts -->
+<script src="scripts/app.js" defer></script>
 
-  <!-- JS -->
-  <script src="scripts/app.js"></script>
+<script defer>
+  const firebaseConfig = {
+    apiKey: "YOUR_KEY",
+    authDomain: "YOUR_DOMAIN",
+    projectId: "YOUR_PROJECT"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
-  <script>
-    auth.onAuthStateChanged(user => {
-      if (!user) {
-        document.querySelector(".cart-icon").innerHTML = `<a href="login.html">Login</a>`;
-      } else {
-        document.querySelector(".cart-icon").innerHTML = `<button onclick="logout()">Logout</button>`;
-      }
+  auth.onAuthStateChanged(user => {
+    document.querySelector(".cart-icon").innerHTML = user
+      ? `<button onclick="logout()">Logout</button>`
+      : `<a href="login.html">Login</a>`;
+  });
+
+  function logout() {
+    auth.signOut().then(() => {
+      alert("Logged out!");
+      window.location.reload();
     });
-
-    function logout() {
-      auth.signOut().then(() => {
-        alert("Logged out!");
-        window.location.reload();
-      });
-    }
-  </script>
+  }
+</script>
 
 </body>
 </html>

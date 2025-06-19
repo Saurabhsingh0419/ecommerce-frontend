@@ -3,14 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Product Detail | MyShop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="styles/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
 
+  <!-- Google Fonts (Optimized Lazy Load) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <!-- FontAwesome Icons (deferred load) -->
+  <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous" defer></script>
 
 </head>
 <body>
 
+  <!-- Header -->
   <header class="main-header">
     <div class="logo">MyShop</div>
     <nav class="nav-links">
@@ -21,14 +30,30 @@
     </div>
   </header>
 
+  <!-- Product Detail Section -->
   <section class="product-detail">
-    <div id="productDetail">Loading product...</div>
+    <div class="detail-card">
+      <div class="zoom-container">
+        <img 
+          id="productImage"
+          src="assets/product.webp"
+          alt="Product Name"
+          loading="lazy"
+          srcset="assets/product-small.webp 480w, assets/product-medium.webp 768w, assets/product.webp 1200w"
+          sizes="(max-width: 600px) 480px, (max-width: 960px) 768px, 1200px">
+      </div>
+
+      <div id="productDetail">Loading product...</div>
+    </div>
+
     <div id="error" style="display:none;">Product not found.</div>
   </section>
 
-  <script src="scripts/product.js"></script>
+  <!-- Product JS -->
+  <script src="scripts/product.js" defer></script>
 
 </body>
 </html>
+
 
 
