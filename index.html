@@ -2,8 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce Frontend</title>
   <link rel="stylesheet" href="styles/main.css">
+
+  <!-- Firebase Config -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+
 </head>
 <body>
 
@@ -43,8 +58,27 @@
 
   <!-- JS -->
   <script src="scripts/app.js"></script>
+
+  <script>
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        document.querySelector(".cart-icon").innerHTML = `<a href="login.html">Login</a>`;
+      } else {
+        document.querySelector(".cart-icon").innerHTML = `<button onclick="logout()">Logout</button>`;
+      }
+    });
+
+    function logout() {
+      auth.signOut().then(() => {
+        alert("Logged out!");
+        window.location.reload();
+      });
+    }
+  </script>
+  
 </body>
 </html>
+
 
 
 
