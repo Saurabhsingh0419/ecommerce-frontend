@@ -413,6 +413,60 @@ body {
     cursor: not-allowed;
   }
       
+  .form-section {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+  }
+  
+  .form-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-section input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .form-section a {
+    color: #ff7e5f;
+    text-decoration: none;
+  }
+  
+  .form-section a:hover {
+    text-decoration: underline;
+  }
+  
+  .form-section p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .form-section .cta-button {
+    padding: 12px;
+    border: none;
+    background: #ff7e5f;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .form-section .cta-button:hover {
+    background: #333;
+  }
   
   
     
